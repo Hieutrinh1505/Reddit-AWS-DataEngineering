@@ -1,0 +1,24 @@
+[2023-10-29T00:56:47.211+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.s3_upload manual__2023-10-29T00:56:43.229844+00:00 [queued]>
+[2023-10-29T00:56:47.216+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.s3_upload manual__2023-10-29T00:56:43.229844+00:00 [queued]>
+[2023-10-29T00:56:47.216+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-10-29T00:56:47.223+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): s3_upload> on 2023-10-29 00:56:43.229844+00:00
+[2023-10-29T00:56:47.228+0000] {standard_task_runner.py:57} INFO - Started process 65 to run task
+[2023-10-29T00:56:47.231+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 's3_upload', 'manual__2023-10-29T00:56:43.229844+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmp7ixrmuji']
+[2023-10-29T00:56:47.233+0000] {standard_task_runner.py:85} INFO - Job 19: Subtask s3_upload
+[2023-10-29T00:56:47.268+0000] {task_command.py:416} INFO - Running <TaskInstance: etl_reddit_pipeline.s3_upload manual__2023-10-29T00:56:43.229844+00:00 [running]> on host c6e1457c8c5f
+[2023-10-29T00:56:47.323+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='httrinh' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='s3_upload' AIRFLOW_CTX_EXECUTION_DATE='2023-10-29T00:56:43.229844+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-10-29T00:56:43.229844+00:00'
+[2023-10-29T00:56:47.333+0000] {logging_mixin.py:151} INFO - None
+[2023-10-29T00:56:47.783+0000] {logging_mixin.py:151} INFO - Bucket already exists
+[2023-10-29T00:56:47.788+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/pipelines/aws_s3_pipeline.py", line 13, in upload_s3_pipeline
+    upload_to_s3(s3,file_path,AWS_BUCKET_NAME,file_path.split('/')[-1])
+AttributeError: 'NoneType' object has no attribute 'split'
+[2023-10-29T00:56:47.813+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=etl_reddit_pipeline, task_id=s3_upload, execution_date=20231029T005643, start_date=20231029T005647, end_date=20231029T005647
+[2023-10-29T00:56:47.820+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 19 for task s3_upload ('NoneType' object has no attribute 'split'; 65)
+[2023-10-29T00:56:47.863+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-10-29T00:56:47.880+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

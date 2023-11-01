@@ -1,0 +1,14 @@
+[2023-10-28T20:39:06.528+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-28T20:39:04.568690+00:00 [queued]>
+[2023-10-28T20:39:06.532+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-28T20:39:04.568690+00:00 [queued]>
+[2023-10-28T20:39:06.532+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-10-28T20:39:06.538+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): reddit_extraction> on 2023-10-28 20:39:04.568690+00:00
+[2023-10-28T20:39:06.543+0000] {standard_task_runner.py:57} INFO - Started process 418 to run task
+[2023-10-28T20:39:06.547+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'reddit_extraction', 'manual__2023-10-28T20:39:04.568690+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmp2hbc2l23']
+[2023-10-28T20:39:06.553+0000] {standard_task_runner.py:85} INFO - Job 8: Subtask reddit_extraction
+[2023-10-28T20:39:06.630+0000] {task_command.py:416} INFO - Running <TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-28T20:39:04.568690+00:00 [running]> on host 2c5944612ac4
+[2023-10-28T20:39:06.696+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='httrinh' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='reddit_extraction' AIRFLOW_CTX_EXECUTION_DATE='2023-10-28T20:39:04.568690+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-10-28T20:39:04.568690+00:00'
+[2023-10-28T20:39:06.703+0000] {logging_mixin.py:151} INFO - Connect to Reddit!
+[2023-10-28T20:39:07.273+0000] {python.py:194} INFO - Done. Returned value was: /opt/airflow/data/output/reddit_20231028.csv
+[2023-10-28T20:39:07.353+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=etl_reddit_pipeline, task_id=reddit_extraction, execution_date=20231028T203904, start_date=20231028T203906, end_date=20231028T203907
+[2023-10-28T20:39:07.381+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-10-28T20:39:07.397+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

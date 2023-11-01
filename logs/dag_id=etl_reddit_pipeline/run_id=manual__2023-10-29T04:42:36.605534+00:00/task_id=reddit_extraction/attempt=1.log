@@ -1,0 +1,40 @@
+[2023-10-29T04:42:39.269+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-29T04:42:36.605534+00:00 [queued]>
+[2023-10-29T04:42:39.277+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-29T04:42:36.605534+00:00 [queued]>
+[2023-10-29T04:42:39.278+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-10-29T04:42:39.289+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): reddit_extraction> on 2023-10-29 04:42:36.605534+00:00
+[2023-10-29T04:42:39.296+0000] {standard_task_runner.py:57} INFO - Started process 92 to run task
+[2023-10-29T04:42:39.300+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'reddit_extraction', 'manual__2023-10-29T04:42:36.605534+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmplodtr7d7']
+[2023-10-29T04:42:39.304+0000] {standard_task_runner.py:85} INFO - Job 22: Subtask reddit_extraction
+[2023-10-29T04:42:39.356+0000] {task_command.py:416} INFO - Running <TaskInstance: etl_reddit_pipeline.reddit_extraction manual__2023-10-29T04:42:36.605534+00:00 [running]> on host c6e1457c8c5f
+[2023-10-29T04:42:39.414+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='httrinh' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='reddit_extraction' AIRFLOW_CTX_EXECUTION_DATE='2023-10-29T04:42:36.605534+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-10-29T04:42:36.605534+00:00'
+[2023-10-29T04:42:39.568+0000] {logging_mixin.py:151} INFO - Connect to Reddit!
+[2023-10-29T04:42:40.106+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3790, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'over_18'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/pipelines/reddit_pipeline.py", line 12, in reddit_pipeline
+    post_df = transform_data(post_df)
+  File "/opt/airflow/etls/reddit_etl.py", line 36, in transform_data
+    post_df['over_18'] = np.where((post_df['over_18'] == True), True,False)
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/core/frame.py", line 3896, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/airflow/.local/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 3797, in get_loc
+    raise KeyError(key) from err
+KeyError: 'over_18'
+[2023-10-29T04:42:40.126+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=etl_reddit_pipeline, task_id=reddit_extraction, execution_date=20231029T044236, start_date=20231029T044239, end_date=20231029T044240
+[2023-10-29T04:42:40.138+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 22 for task reddit_extraction ('over_18'; 92)
+[2023-10-29T04:42:40.192+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-10-29T04:42:40.209+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -19,13 +19,13 @@ AWS Cloud Platform
 ## Reddit API
 1. Please go to https://www.reddit.com/prefs/apps/ to create a Reddit App to get your Client and Secret Key.
 
-
-More info about dataset can be found here:
-1. Website - https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
-2. Data Dictionary - https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
-
-## Data Model
-<img src="data_model.jpeg">
+## Instruction to start the project
+1. Clone my project
+2. Go to config/config.conf to fill in all the keys needed to run the project
+3. Run ```pip install -r /path/to/requirements.txt.``` to get all the packages needed.
+4. Run ```docker compose up -d --build``` to build docker image and start running Airflow
+5. Go to Airflow and trigger the DAG
+6. Go to AWS S3 and start playing using AWS services like AWS Glue, AWS Athena, AWS Redshift,...
 
 ## Dashboard
 You can get access to the dashboard by going to this link --https://lookerstudio.google.com/s/rH5GRhVanuM

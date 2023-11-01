@@ -27,6 +27,6 @@ AWS Cloud Platform
 5. Go to Airflow and trigger the DAG
 6. Go to AWS S3 and start playing using AWS services like AWS Glue, AWS Athena, AWS Redshift,...
 
-## Dashboard
-You can get access to the dashboard by going to this link --https://lookerstudio.google.com/s/rH5GRhVanuM
-<img src="Dashboard.png">
+## Charts
+Here is a simple pie chart that shows the percentage of comments in each author's post.
+<img src="Dashboard2.png">

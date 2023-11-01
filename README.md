@@ -28,5 +28,5 @@ AWS Cloud Platform
 6. Go to AWS S3 and start playing using AWS services like AWS Glue, AWS Athena, AWS Redshift,...
 
 ## Charts
-Here is a simple pie chart that shows the percentage of comments in each author's post.
+Here is a simple pie chart created from AWS Redshift that shows the percentage of comments in each author's post.
 <img src="Dashboard2.png">

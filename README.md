@@ -5,7 +5,7 @@
 The goal of this project is to create an end-to-end pipeline using Docker, Airflow, AWS S3, AWS Glue, and AWS Redshift
 
 ## Architecture 
-<img src="architecture.jpg">
+<img src="AWS_Pipeline.png">
 
 ## Technology Used
 - Programming Language - Python
